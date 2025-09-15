@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: wisecow
-        image: Mady-143/wish:latest
+        image: mady143/wisecow:latest
         ports:
         - containerPort: 4499
