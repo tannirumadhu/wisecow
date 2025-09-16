@@ -9,4 +9,6 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 4499
-  type: LoadBalancer
+      nodePort: 31999   # Add a NodePort manually
+  type: NodePort        # Change LoadBalancer to NodePort
+

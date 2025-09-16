@@ -17,3 +17,6 @@ spec:
         image: mady143/wisecow:latest
         ports:
         - containerPort: 4499
+      imagePullSecrets:
+      - name: myregistrykey
+
