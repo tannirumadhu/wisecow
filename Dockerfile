@@ -7,16 +7,12 @@ RUN apt-get update && apt-get install -y \
     netcat \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy your app
-WORKDIR /app
-COPY wisecow.sh .
+# Add /usr/games to PATH
+ENV PATH="/usr/games:${PATH}"
 
-# Make script executable
+WORKDIR /app
+COPY . /app
 RUN chmod +x wisecow.sh
 
-# Expose port
-EXPOSE 4499
-
-# Start script
 CMD ["./wisecow.sh"]
 
