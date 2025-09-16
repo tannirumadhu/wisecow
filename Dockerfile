@@ -1,12 +1,22 @@
 FROM ubuntu:20.04
 
-RUN apt-get update && \
-    apt-get install -y fortune cowsay netcat && \
-    apt-get clean
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    fortune-mod \
+    cowsay \
+    netcat \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY wisecow.sh /wisecow.sh
-RUN chmod +x /wisecow.sh
+# Copy your app
+WORKDIR /app
+COPY wisecow.sh .
 
+# Make script executable
+RUN chmod +x wisecow.sh
+
+# Expose port
 EXPOSE 4499
 
-CMD ["/wisecow.sh"]
+# Start script
+CMD ["./wisecow.sh"]
+
